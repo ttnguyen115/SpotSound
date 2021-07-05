@@ -3,15 +3,8 @@ import { UserState, UserType } from '../types';
 
 const initialState: UserState = {
     data: null,
-    token: 'BQC3Cf2pSiYWCuSHIIjEO2LmapEmy0r2tv7yYxQ1CHnD8ZhDcIoMsoWpqhGb6yvZCoKxTkDC6BgoyGmf2rXTQAoOAKFU6FJqFy1c6_LyNDKo9j7pOvK2vMYqohxaa5RhwZyvuIiC9nhui3ZPOh-E0M2OGegUrg6dbR0EMoLzv5EaUavm',
-}
-
-const UserData: UserType = {
-    display_name: '',
-    id: '',
-    type: '',
-    uri: '',
-    images: []
+    token: ''
+    // token: 'BQC3Cf2pSiYWCuSHIIjEO2LmapEmy0r2tv7yYxQ1CHnD8ZhDcIoMsoWpqhGb6yvZCoKxTkDC6BgoyGmf2rXTQAoOAKFU6FJqFy1c6_LyNDKo9j7pOvK2vMYqohxaa5RhwZyvuIiC9nhui3ZPOh-E0M2OGegUrg6dbR0EMoLzv5EaUavm',
 }
 
 const userSlice = createSlice({

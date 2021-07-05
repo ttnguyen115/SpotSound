@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from './app/hooks';
 import { RootState } from './app/store';
 import Login from './component/Login/Login';
 import Player from './component/Player/Player';
+import { setPlaylists } from './features/playlist/playlistSlice';
 import { setToken, setUser } from './features/user/userSlice';
 
 const spotify = new SpotifyWebApi();
@@ -25,6 +26,14 @@ const App: FC = () => {
       spotify.getMe().then(user => {
         const { display_name, id, type, uri, images } = user;
         dispatch(setUser({ display_name, id, uri, type, images }));
+      });
+
+      spotify.getUserPlaylists().then(playlists => {
+        playlists.items.forEach(item => {
+          const { id, name, tracks, href } = item;
+          dispatch(setPlaylists({ id, name, tracks, href }));
+          console.log(item);
+        })
       })
     }
   }, [dispatch]);
