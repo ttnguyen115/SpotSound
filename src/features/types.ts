@@ -22,8 +22,16 @@ export interface PlaylistType {
     name: string;
     tracks: TrackType;
     href: string;
+    description: string;
+}
+
+export interface ActiveType {
+    id: string;
+    name: string;
+    description: string;
 }
 
 export interface PlaylistState {
     data: Array<PlaylistType>;
+    active: ActiveType | null;
 }

@@ -3,7 +3,7 @@ import { UserState, UserType } from '../types';
 
 const initialState: UserState = {
     data: null,
-    token: ''
+    token: '',
     // token: 'BQC3Cf2pSiYWCuSHIIjEO2LmapEmy0r2tv7yYxQ1CHnD8ZhDcIoMsoWpqhGb6yvZCoKxTkDC6BgoyGmf2rXTQAoOAKFU6FJqFy1c6_LyNDKo9j7pOvK2vMYqohxaa5RhwZyvuIiC9nhui3ZPOh-E0M2OGegUrg6dbR0EMoLzv5EaUavm',
 }
 
@@ -11,17 +11,8 @@ const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        setUser: (state, action: PayloadAction<UserType>): UserState => {
-            return {
-                ...state,
-                data: {
-                    display_name: action.payload.display_name,
-                    id: action.payload.id,
-                    type: action.payload.type,
-                    uri: action.payload.uri,
-                    images: action.payload.images,
-                }
-            }
+        setUser: (state, action: PayloadAction<UserType>) => {
+            state.data = action.payload;
         },
 
         setToken: (state, action: PayloadAction<string>): UserState => {
