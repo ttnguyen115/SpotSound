@@ -13,7 +13,6 @@ const spotify = new SpotifyWebApi();
 const App: FC = () => {
   const dispatch = useAppDispatch();
   const userData = useAppSelector((state: RootState) => state.user);
-  const playlistData = useAppSelector((state: RootState) => state.playlist.data);
 
   useEffect(() => {
     const hash: tokenType = getTokenFromUrl(); 
@@ -31,14 +30,14 @@ const App: FC = () => {
 
       spotify.getUserPlaylists().then(playlists => {
         playlists.items.forEach(item => {
-          const { id, name, tracks, href, description } = item;
-          dispatch(setPlaylists({ id, name, tracks, href, description }));
+          const { id, name, href, description, images } = item;
+          dispatch(setPlaylists({ id, name, href, description, images }));
         })
       });
 
       spotify.getPlaylist("5ZIh5XRUgpTZzo4UdDxhhM").then(playlist => {
-        console.log(playlist);
-        dispatch(setPlaylist("5ZIh5XRUgpTZzo4UdDxhhM"));
+        const { id, name, tracks, description, images } = playlist;
+        dispatch(setPlaylist({ id, name, tracks, description, images }));
       })
     }
   }, [dispatch]);

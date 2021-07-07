@@ -17,12 +17,8 @@ const playlistSlice = createSlice({
             if (index === -1) state.data.push(action.payload);
         },
 
-        setPlaylist: (state, action: PayloadAction<string>) => {
-            console.log(action.payload);
-
-            const index = state.data.findIndex(x => x.id === action.payload);
-
-            state.active = state.data[index];
+        setPlaylist: (state, action: PayloadAction<ActiveType>) => {
+            state.active = action.payload;
         }
     }
 });

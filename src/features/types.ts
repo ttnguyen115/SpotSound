@@ -11,24 +11,20 @@ export interface UserState {
     token: string;
 }
 
-interface TrackType {
-    href: string;
-    total: number;
-}
-
-
 export interface PlaylistType {
     id: string;
     name: string;
-    tracks: TrackType;
     href: string;
     description: string;
+    images: SpotifyApi.ImageObject[] | undefined;
 }
 
 export interface ActiveType {
     id: string;
     name: string;
     description: string;
+    images: SpotifyApi.ImageObject[] | undefined;
+    tracks: SpotifyApi.PagingObject<SpotifyApi.PlaylistTrackObject>;
 }
 
 export interface PlaylistState {
