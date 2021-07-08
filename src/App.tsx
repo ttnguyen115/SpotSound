@@ -5,8 +5,8 @@ import { useAppDispatch, useAppSelector } from './app/hooks';
 import { RootState } from './app/store';
 import Login from './component/Login/Login';
 import Player from './component/Player/Player';
-import { fetchActivePlaylist, fetchPlaylistListByUser } from './features/playlist/playlistSlice';
-import { setToken, fetchUserByToken } from './features/user/userSlice';
+import { fetchPlaylistListByUser } from './features/playlist/playlistSlice';
+import { fetchUserByToken, setToken } from './features/user/userSlice';
 
 const spotify = new SpotifyWebApi();
 
@@ -28,8 +28,6 @@ const App: FC = () => {
       dispatch(fetchUserByToken());
 
       dispatch(fetchPlaylistListByUser());
-
-      dispatch(fetchActivePlaylist("5ZIh5XRUgpTZzo4UdDxhhM"));
     }
   }, [dispatch]);
 

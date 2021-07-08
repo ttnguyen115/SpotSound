@@ -28,4 +28,5 @@ export interface ActiveType {
 export interface PlaylistState {
     data: Array<PlaylistType>;
     active: ActiveType | null;
+    playingPlaylist: PlaylistType | null;
 }

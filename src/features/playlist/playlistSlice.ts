@@ -6,7 +6,8 @@ const spotify = new SpotifyWebApi();
 
 const initialState: PlaylistState = {
     data: [],
-    active: null
+    active: null,
+    playingPlaylist: null
 }
 
 export const fetchPlaylistListByUser = createAsyncThunk(
