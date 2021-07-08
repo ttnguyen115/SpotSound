@@ -1,9 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const SidebarOption = (props: { option: string, icon?: JSX.Element }) => {
+interface Props {
+    option: string;
+    icon?: JSX.Element;
+    handleActivePlaylist?: (id: string) => void;
+    playlistId?: string;
+}
+
+const SidebarOption = (props: Props) => {
     return (
-        <OptionContainer>
+        <OptionContainer onClick={() => props.handleActivePlaylist(props.playlistId)}>
             { props.icon && <IconStyle>{props.icon}</IconStyle>}
             { props.icon ? <h4>{props.option}</h4> : <TitleStyle>{props.option}</TitleStyle> }
         </OptionContainer>

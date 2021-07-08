@@ -3,8 +3,9 @@ import LibraryMusicOutlinedIcon from '@material-ui/icons/LibraryMusicOutlined';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { RootState } from '../../app/store';
+import { fetchActivePlaylist } from '../../features/playlist/playlistSlice';
 import SidebarOption from './SidebarOption';
 
 let homeIcon: JSX.Element = <HomeOutlinedIcon />
@@ -12,7 +13,12 @@ let searchIcon: JSX.Element = <SearchOutlinedIcon />
 let libraryIcon: JSX.Element = <LibraryMusicOutlinedIcon />
 
 const Sidebar: FC = () => {
+    const dispatch = useAppDispatch();
     const playlistData = useAppSelector((state: RootState) => state.playlist.data);
+
+    const handleActivePlaylist = (id: string) => {
+        dispatch(fetchActivePlaylist(id));
+    }
 
     return (
         <SidebarContainer>
@@ -28,7 +34,7 @@ const Sidebar: FC = () => {
 
             { 
                 playlistData.map(playlist => (
-                    <SidebarOption key={playlist.id} option={playlist.name} />
+                    <SidebarOption key={playlist.id} option={playlist.name} handleActivePlaylist={handleActivePlaylist} playlistId={playlist.id} />
                 ))
             }
 
